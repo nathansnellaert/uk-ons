@@ -1,5 +1,3 @@
-# Add parent directory (connector root) to path for utils
-
 """UK ONS API client with rate limiting."""
 
 from ratelimit import limits, sleep_and_retry
@@ -12,6 +10,7 @@ HEADERS = {
     'User-Agent': 'DataIntegrations/1.0 (data-integrations-project)',
     'Accept': 'application/json',
 }
+
 
 # ONS rate limits: 120 requests per 10 seconds, 200 per minute
 # We'll be conservative with 100 requests per minute

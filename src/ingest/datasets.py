@@ -1,6 +1,5 @@
-
 """Fetch ONS dataset catalogue"""
-from ons_client import get_datasets
+from utils import get_datasets
 from subsets_utils import save_raw_json
 
 

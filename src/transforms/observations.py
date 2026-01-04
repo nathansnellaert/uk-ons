@@ -3,16 +3,8 @@
 import csv
 from io import StringIO
 import pyarrow as pa
+from utils import KEY_DATASETS
 from subsets_utils import load_raw_file, upload_data
-
-KEY_DATASETS = [
-    'cpih01',
-    'mm23',
-    'lms',
-    'gdp-low-level-aggregates',
-    'retail-sales-index',
-    'uk-spending-on-cards',
-]
 
 
 def run():
@@ -49,15 +41,12 @@ def run():
     print(f"Total observations: {len(all_observations)}")
 
 
-def parse_csv_observations(dataset_id, csv_text, max_rows=50000):
+def parse_csv_observations(dataset_id, csv_text):
     """Parse CSV text into observation dicts."""
     reader = csv.DictReader(StringIO(csv_text))
 
     observations = []
-    for i, row in enumerate(reader):
-        if i >= max_rows:
-            break
-
+    for row in reader:
         obs = {
             'dataset_id': dataset_id,
             'time': row.get('Time') or row.get('time') or row.get('DATE') or row.get('Period'),

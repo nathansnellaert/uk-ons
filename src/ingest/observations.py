@@ -1,16 +1,7 @@
 """Fetch ONS key economic indicator observations."""
 
-from ons_client import get_dataset_editions, get_edition_versions, rate_limited_get
+from utils import get_dataset_editions, get_edition_versions, rate_limited_get, KEY_DATASETS
 from subsets_utils import get, save_raw_file
-
-KEY_DATASETS = [
-    'cpih01',
-    'mm23',
-    'lms',
-    'gdp-low-level-aggregates',
-    'retail-sales-index',
-    'uk-spending-on-cards',
-]
 
 
 def run():
